@@ -1,10 +1,17 @@
 const db = require('./config/db');
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path');
 const app = express()
-const port = 3000
-
+const port = process.env.PORT || 5000;
 const deploymentRouter = require('./src/components/deployments/deployment.router');
+
+// API calls
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
  
@@ -12,6 +19,14 @@ app.use(bodyParser.json())
 
 app.use("/deployment",deploymentRouter);
 
-
-
-app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
+  
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+  }
+  
+app.listen(port, () => console.log(`Listening on port ${port}`));
