@@ -3,11 +3,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express()
+const cors = require('cors')
 const port = process.env.PORT || 5000;
 const deploymentRouter = require('./src/components/deployments/deployment.router');
 
 // API calls
-
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
