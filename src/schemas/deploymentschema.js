@@ -9,6 +9,7 @@ const deploymentSchema = new Schema({
   updated_at: Date
 }, {collection:'deploymentCollection'});
 
+
 deploymentSchema.pre('save', function(next) {
   let currentDate = new Date();
 
