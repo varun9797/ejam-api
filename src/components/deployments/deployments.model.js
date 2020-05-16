@@ -21,8 +21,8 @@ module.exports.getAllDeploymentTemplate = () => new Promise((resolve, reject) =>
         }
     });
 });
-module.exports.deleteDeploymentList = (name) => new Promise((resolve, reject) => {
-    deploymentSchema.deleteOne({ name : name }, function (err, data) {
+module.exports.deleteDeploymentList = (id) => new Promise((resolve, reject) => {
+    deploymentSchema.deleteOne({ _id : id }, function (err, data) {
         if (err) {
             reject(err)
         } else {

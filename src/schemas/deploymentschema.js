@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const deploymentSchema = new Schema({
-  name: { type: String, required: true, unique: false },
+  name: { type: String, required: true},
   versions : { type: String, required: true },
   url:{ type: String, required: true },
   created_at: Date,

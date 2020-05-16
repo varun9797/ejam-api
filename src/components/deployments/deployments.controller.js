@@ -19,7 +19,7 @@ module.exports.getAllDeploymentTemplate = async (req, res) => {
 }
 module.exports.deleteDeploymentList = async (req, res) => {
     try {
-        let data = await deploymentModel.deleteDeploymentList(req.body.name);
+        let data = await deploymentModel.deleteDeploymentList(req.body._id);
         res.send(data);
     } catch (err) {
         console.log(err);
