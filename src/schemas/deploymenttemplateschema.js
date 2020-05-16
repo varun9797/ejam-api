@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const deploymentTemplateSchema = new Schema({
-  name: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
   versions : { type: Array, required: true },
 }, {collection:'deploymenttemplate'});
 
